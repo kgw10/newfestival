@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{fragment/default}">
+<head>
+  <title layout:fragment="title">다이어리</title>
+  <th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/diary.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  </th:block>
+  <th:block layout:fragment="script">
+    <script th:src="@{/js/diary.js}"></script>
+  </th:block>
+</head>
+<div layout:fragment="main" id="main">
+  <h2> 다이어리 </h2>
+  <div id="calendar_up">
+    <div class="monthbt">
+      <div class="arrowbt">
+        <button type="button" class="prev" onclick="prevMonth();">◀</button>
+      </div>
+    </div>
+    <span id="cym"></span>
+    <div class="monthbt">
+      <div class="arrowbt">
+        <button type="button" class="next" onclick="nextMonth();">▶</button>
+      </div>
+    </div>
+  </div>
+  <div class="calendar">
+    <table>
+      <colgroup>
+        <col style="width:calc(100%/7)" span="7">
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col" class="redday"><span>일</span></th>
+          <th scope="col"><span>월</span></th>
+          <th scope="col"><span>화</span></th>
+          <th scope="col"><span>수</span></th>
+          <th scope="col"><span>목</span></th>
+          <th scope="col"><span>금</span></th>
+          <th scope="col" class="blueday"><span>토</span></th>
+        </tr>
+      </thead>
+      <tbody id="calendar"></tbody>
+    </table>
+  </div>
+  <div id="festival">
+    <div class="fes_info">
+      <div class="fes_img">
+        <img src="축제이미지링크.jpg" alt="축제이미지">
+      </div>
+      <div class="fes_sinfo">
+        <div class="fes_name">OO 축제</div>
+        <div class="fes_date">2024.10.31~2024.11.11</div>
+        <div class="fes_talk">가족, 친구들과 함께<br>갈 수 있는 축제...</div>
+      </div>
+    </div>
+    <div class="fes_bt">
+      <div class="date_bt">
+        <label>
+          <i class="bi bi-calendar3" style="cursor:pointer;" onclick="showCal()"></i>
+        </label>
+      </div>
+      <div class="alarm_bt">
+        <button type="button" id="alarm_bt" onclick="alarmToggle();"><i class="bi-bell-slash"></i></button>
+      </div>
+      <div class="del_bt">
+        <i class="bi bi-trash" style="cursor:pointer;" onclick="delFes()" aria-label="삭제"></i>
+      </div>
+    </div>
+  </div>
+</div>
+</html>

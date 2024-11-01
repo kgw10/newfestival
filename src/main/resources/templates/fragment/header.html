@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="header" id="header">
+  <div id="nav">
+    <div id="logo">
+      <div class="logo">
+        <a href="/">로고이미지</a>
+      </div>
+    </div>
+    <div class="upperbar">
+      <div class="userbox">
+        <div class="userx">여기는 로그아웃 상태
+          <div class="login">로그인 버튼</div>
+          <div class="signup">회원가입 버튼</div>
+        </div>
+        <div class="usero">
+          <div class="logout">로그아웃 버튼</div>
+          <div class="mypage">마이페이지 버튼</div>
+        </div>
+      </div>
+      <div id="search">
+        <div class="search">여기는 검색창</div>
+      </div>
+      <div class="menulist">
+        <ul id="menulist">
+          <li id="festivalbt"> <a href="/festival" class="festival">축제일정 버튼</a> </li>
+          <li id="diarybt"> <a href="/diary" class="festival">다이어리 버튼</a> </li>
+          <li id="partybt"> <a href="/party" class="festival">함께가요 버튼</a> </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</html>
