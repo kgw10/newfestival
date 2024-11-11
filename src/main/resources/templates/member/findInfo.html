@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragment/main}">
+
+<head>
+  <meta charset="UTF-8">
+  <title>아이디/비밀번호 찾기</title>
+  <link rel="stylesheet" href="/css/findInfo.css"> <!-- CSS 파일 링크 -->
+  <script src="/js/info.js"></script>
+</head>
+
+<body>
+<div layout:fragment="main" id="main">
+  <div id="findInfoWrap">
+    <!-- 아이디 찾기 폼 -->
+    <div class="formData">
+      <div class="formTitle">아이디 찾기</div>
+      <form method="post" action="/member/findId">
+        <div id="findIdSection">
+          <div class="inputField">
+            <input type="text" name="name" id="name" placeholder="이름" required>
+          </div>
+          <div class="inputField">
+            <input type="email" name="email" id="email" placeholder="이메일" required>
+          </div>
+          <div class="findBt">
+            <button type="submit">아이디 찾기</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- 비밀번호 찾기 폼 -->
+    <div class="formData">
+      <div class="formTitle">비밀번호 찾기</div>
+      <form method="post" action="/member/findPassword">
+        <div id="findPasswordSection">
+          <div class="inputField">
+            <input type="text" name="userId" id="userId" placeholder="아이디" required>
+          </div>
+          <div class="inputField">
+            <input type="text" name="nameForPassword" id="nameForPassword" placeholder="이름" required>
+          </div>
+          <div class="inputField">
+            <input type="email" name="emailForPassword" id="emailForPassword" placeholder="이메일" required>
+          </div>
+          <div class="findBt">
+            <button type="submit">비밀번호 찾기</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+    <!-- 회원가입 링크 -->
+    <div class="joinLink">
+      <a href="/member/signUp">회원가입</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

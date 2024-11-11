@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
 <div th:fragment="header" id="header">
-  <div id="nav">
-    <div id="logo">
-      <div class="logo">
-        <a href="/">로고이미지</a>
-      </div>
-    </div>
-    <div class="upperbar">
-      <div class="userbox">
-        <div class="userx">여기는 로그아웃 상태
-          <div class="login">로그인 버튼</div>
-          <div class="signup">회원가입 버튼</div>
+    <div id="nav">
+        <div class="logo" onclick="location.href='/'" style="cursor: pointer;">
+            <img th:src="@{/image/logo2.png}" alt="logo">
         </div>
-        <div class="usero">
-          <div class="logout">로그아웃 버튼</div>
-          <div class="mypage">마이페이지 버튼</div>
+        <div class="search">
+            <form id="search" method="get" action="/festival/search">
+                <input type="text" name="keyword" id="keyword" placeholder="축제 검색어 입력">
+                <button type="submit"> <i class="bi bi-search"></i> </button>
+            </form>
         </div>
-      </div>
-      <div id="search">
-        <div class="search">여기는 검색창</div>
-      </div>
-      <div class="menulist">
-        <ul id="menulist">
-          <li id="festivalbt"> <a href="/festival" class="festival">축제일정 버튼</a> </li>
-          <li id="diarybt"> <a href="/diary" class="festival">다이어리 버튼</a> </li>
-          <li id="partybt"> <a href="/party" class="festival">함께가요 버튼</a> </li>
-        </ul>
-      </div>
+        <div class="right-buttons">
+            <span th:if="${session.userId==null}">
+                <a href="/member/signIn" class="login-button">로그인</a>
+                <a href="/member/signUp" class="login-button">회원가입</a>
+            </span>
+            <span th:if="${session.userId!=null}">
+            <span class="login-button" th:text="${nickname+' 님!'}"></span>
+            <a href="/member/logout" class="login-button">로그아웃</a>
+            <a href="/mypage/mypage" class="login-button">마이페이지</a>
+            </span>
+        </div>
     </div>
-  </div>
+    <div class="button-group">
+        <div class="festival">
+            <button type="button" onclick="location.href='/festival'">축제일정</button>
+        </div>
+        <div class="diary">
+            <button type="button" onclick="location.href='/diary'">다이어리</button>
+        </div>
+        <div class="together">
+            <button type="button" onclick="location.href='/party'">함께가요</button>
+        </div>
+    </div>
 </div>
+</body>
 </html>

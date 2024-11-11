@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{fragment/main}">
+<head>
+  <title layout:fragment="title">축제검색</title>
+  <th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/search.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  </th:block>
+  <th:block layout:fragment="script">
+    <script th:src="@{/js/search.js}"></script>
+  </th:block>
+</head>
+<div layout:fragment="main" id="main">
+  <h2> 축제검색화면 </h2>
+  <div id="festival-list">
+    <div th:if="${festivals.isEmpty()}">
+      <p>검색 결과가 없습니다.</p>
+    </div>
+    <div th:each="festival : ${festivals}" class="festival-card" th:onclick="|location.href='/festival/info/'+${festival.festival_id}|">
+      <img class="fes_img" th:src="${festival.firstimage != null ? festival.firstimage : 'https://via.placeholder.com/400x200'}" alt="축제 이미지">
+      <h2 th:text="${festival.title}"></h2>
+      <p><strong>시작일:</strong><span th:text="${festival.eventstartdate}"></span></p>
+      <p><strong>종료일:</strong><span th:text="${festival.eventenddate}"></span></p>
+      <p><strong>주소:</strong><span th:text="${festival.addr1}"></span></p>
+    </div>
+  </div>
+</div>
+</html>

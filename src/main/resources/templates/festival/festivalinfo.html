@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{fragment/main}">
+<head>
+  <title layout:fragment="title">축제정보</title>
+  <th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/festival.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  </th:block>
+  <th:block layout:fragment="script">
+    <script th:src="@{/js/festival.js}"></script>
+  </th:block>
+</head>
+<div layout:fragment="main" id="main">
+  <div class="festival-info">
+    <h2 th:text="${festival.title}"></h2>
+    <img class="bigimage" th:src="${festival.firstimage!=null ? festival.firstimage : '이미지가 없습니다.'}" alt="축제 이미지">
+    <p><strong>시작일 : </strong><span th:text="${festival.eventstartdate}"></span></p>
+    <p><strong>종료일 : </strong><span th:text="${festival.eventenddate}"></span></p>
+    <p><strong>주소 : </strong><span th:text="${festival.addr1}"></span></p>
+    <p th:if="${festival.addr2!=null&&festival.addr2!=''}"><strong>장소 : </strong><span th:text="${festival.addr2}"></span></p>
+    <p><strong>전화번호 : </strong><span th:text="${festival.tel}"></span></p>
+    <button type="button" id="reservebt">예약</button>
+  </div>
+</div>
+</html>
