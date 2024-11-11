@@ -10,7 +10,7 @@ function updateCalendar(){
     cb.innerHTML="";
     const startDay=new Date(year, month, 1).getDay();
     let day=1;
-    let rowadd= 0;
+    let rowadd=0;
     let row=document.createElement("tr");
     for(let i=0;i<startDay;i++){
         let emptyCell=document.createElement("td");
