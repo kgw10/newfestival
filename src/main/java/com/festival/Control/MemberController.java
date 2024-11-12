@@ -41,6 +41,7 @@ public class MemberController {
         }
     }
 
+
     // 로그아웃 처리
     @GetMapping("/logout")
     public String logout(HttpSession session) {
@@ -117,6 +118,19 @@ public class MemberController {
         // 이메일 앞부분과 도메인 결합
         String email = memberDTO.getEmail() + "@" + memberDTO.getEmailDomain();
         memberDTO.setEmail(email);  // 합쳐진 이메일을 memberDTO에 설정
+
+
+        // 아이디와 닉네임 중복 여부 확인
+        if (memberService.isUserIdExists(memberDTO.getId())) {
+            model.addAttribute("signUpFailMsg", "아이디가 중복입니다.");
+            return "member/join";
+        }
+
+        if (memberService.isNicknameExists(memberDTO.getNickname())) {
+            model.addAttribute("signUpFailMsg", "닉네임이 중복입니다.");
+            return "member/join";
+        }
+
 
         boolean isRegistered = memberService.registerMember(memberDTO);
         if (isRegistered) {

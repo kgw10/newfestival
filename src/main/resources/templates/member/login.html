@@ -24,9 +24,9 @@
                     <input type="password" name="password" id="password" placeholder="PASSWORD" required>
                 </div>
 
-                <!-- 로그인 실패 메시지 출력 -->
-                <p th:if="${loginFailMsg}" th:text="${loginFailMsg}"
-                   style="color:red; padding-bottom:20px;"></p>
+                    <!-- 로그인 실패 메시지 출력 -->
+                    <p th:if="${loginFailMsg}" th:text="${loginFailMsg}"
+                       style="color:red; padding-bottom:20px;"></p>
 
                 <div class="loginBt">
                     <button type="submit">Login</button>
