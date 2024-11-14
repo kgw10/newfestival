@@ -123,13 +123,14 @@ public class MemberController {
         // 아이디와 닉네임 중복 여부 확인
         if (memberService.isUserIdExists(memberDTO.getId())) {
             model.addAttribute("signUpFailMsg", "아이디가 중복입니다.");
-            return "member/join";
+            return "member/join"; // 폼 페이지에 머무르며 오류 메시지 표시
         }
 
         if (memberService.isNicknameExists(memberDTO.getNickname())) {
             model.addAttribute("signUpFailMsg", "닉네임이 중복입니다.");
-            return "member/join";
+            return "member/join"; // 폼 페이지에 머무르며 오류 메시지 표시
         }
+
 
 
         boolean isRegistered = memberService.registerMember(memberDTO);

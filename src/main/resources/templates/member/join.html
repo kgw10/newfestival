@@ -6,6 +6,22 @@
   <meta charset="UTF-8">
   <title>회원가입</title>
   <link rel="stylesheet" href="/css/join.css"> <!-- 회원가입 전용 CSS 파일 추가 -->
+
+  <!-- 서버에서 전달된 signUpFailMsg를 전역 변수로 설정 -->
+<!--  <script th:inline="javascript">-->
+<!--    /* signUpFailMsg를 전역 변수로 설정 */-->
+<!--    var signUpFailMsg = [[${signUpFailMsg != null}]] ? [[${signUpFailMsg}]] : null;-->
+<!--  </script>-->
+  <!-- signUpFailMsg를 JavaScript로 전달하여 알림창 설정 -->
+  <!-- signUpFailMsg를 JavaScript로 전달하여 알림창 설정 -->
+  <script th:inline="javascript">
+    /* signUpFailMsg가 null이 아닐 경우에만 alert 창을 띄움 */
+    var signUpFailMsg = [[${signUpFailMsg != null}]] ? '[[${signUpFailMsg}]]' : null;
+    if (signUpFailMsg) {
+      alert(signUpFailMsg);
+    }
+  </script>
+
   <script src="/js/join.js"></script>
 </head>
 <body>
@@ -425,7 +441,7 @@
         </div>
 
         <!-- 비밀번호 확인 -->
-        <div class="inputField">
+          <div class="inputField">
           <input type="password" id="confirmPassword" placeholder="비밀번호 확인" min="8" max="20" required>
         </div>
 
@@ -481,13 +497,33 @@
           <button type="submit">가입하기</button>
         </div>
 
-        <!-- 로그인 실패 메시지 출력 -->
-        <p th:if="${signUpFailMsg}" th:text="${signUpFailMsg}"
-           style="color:red; padding-bottom:20px;"></p>
+
+<!--        <script th:inline="javascript">-->
+<!--          /* signUpFailMsg가 null이 아닐 때만 alert 창 표시 */-->
+<!--          if ([[${signUpFailMsg != null}]]) {-->
+<!--              alert([[${signUpFailMsg}]]);-->
+<!--          }-->
+<!--        </script>-->
+<!--        &lt;!&ndash; 로그인 실패 메시지 출력 &ndash;&gt;-->
+<!--        <p th:if="${signUpFailMsg}" th:text="${signUpFailMsg}"-->
+<!--           style="color:red; padding-bottom:20px;"></p>-->
+        <script>
+          // 회원가입 폼 유효성 검사
+          function validateSignUpForm() {
+            if (signUpFailMsg) {
+              alert(signUpFailMsg); // 유효성 검사 실패 메시지 표시
+              return false; // 폼 제출 방지
+            }
+            return true; // 유효성 검사 통과 시 제출 허용
+          }
+        </script>
 
       </div>
     </form>
   </div>
 </div>
+
+
+
 </body>
 </html>
