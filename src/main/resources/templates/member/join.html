@@ -16,7 +16,7 @@
   <!-- signUpFailMsg를 JavaScript로 전달하여 알림창 설정 -->
   <script th:inline="javascript">
     /* signUpFailMsg가 null이 아닐 경우에만 alert 창을 띄움 */
-    var signUpFailMsg = [[${signUpFailMsg != null}]] ? '[[${signUpFailMsg}]]' : null;
+    var signUpFailMsg = [[${signUpFailMsg ! = null}]] ? '[[${signUpFailMsg}]]' : null;
     if (signUpFailMsg) {
       alert(signUpFailMsg);
     }
