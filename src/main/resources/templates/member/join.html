@@ -7,20 +7,7 @@
   <title>회원가입</title>
   <link rel="stylesheet" href="/css/join.css"> <!-- 회원가입 전용 CSS 파일 추가 -->
 
-  <!-- 서버에서 전달된 signUpFailMsg를 전역 변수로 설정 -->
-<!--  <script th:inline="javascript">-->
-<!--    /* signUpFailMsg를 전역 변수로 설정 */-->
-<!--    var signUpFailMsg = [[${signUpFailMsg != null}]] ? [[${signUpFailMsg}]] : null;-->
-<!--  </script>-->
-  <!-- signUpFailMsg를 JavaScript로 전달하여 알림창 설정 -->
-  <!-- signUpFailMsg를 JavaScript로 전달하여 알림창 설정 -->
-  <script th:inline="javascript">
-    /* signUpFailMsg가 null이 아닐 경우에만 alert 창을 띄움 */
-    var signUpFailMsg = [[${signUpFailMsg ! = null}]] ? '[[${signUpFailMsg}]]' : null;
-    if (signUpFailMsg) {
-      alert(signUpFailMsg);
-    }
-  </script>
+
 
   <script src="/js/join.js"></script>
 </head>
@@ -30,9 +17,9 @@
     <form method="post" action="/member/signUp" th:object="${memberDTO}">
       <!-- 이용약관 섹션 -->
       <div class="formData">
-        <div class="formTitle">이용약관</div>
+        <div class="formTitle">이용약관 동의(필수)</div>
         <div class="terms">
-          <p>제1조(목적) 이 약관은 업체 회사(전자상거래 사업자)가 운영하는 업체 사이버 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리․의무 및 책임사항을 규정함을 목적으로 합니다.
+          <textarea readonly>제1조(목적) 이 약관은 업체 회사(전자상거래 사업자)가 운영하는 업체 사이버 몰(이하 “몰”이라 한다)에서 제공하는 인터넷 관련 서비스(이하 “서비스”라 한다)를 이용함에 있어 사이버 몰과 이용자의 권리․의무 및 책임사항을 규정함을 목적으로 합니다.
 
             ※「PC통신, 무선 등을 이용하는 전자상거래에 대해서도 그 성질에 반하지 않는 한 이 약관을 준용합니다.」
 
@@ -268,10 +255,13 @@
             ① “몰”과 이용자 간에 발생한 전자상거래 분쟁에 관한 소송은 제소 당시의 이용자의 주소에 의하고, 주소가 없는 경우에는 거소를 관할하는 지방법원의 전속관할로 합니다. 다만, 제소 당시 이용자의 주소 또는 거소가 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다.
 
             ② “몰”과 이용자 간에 제기된 전자상거래 소송에는 한국법을 적용합니다.
-          </p>
+          </textarea>
         </div>
+
+
+        <div class="formTitle">개인정보 수집 및 이용 동의(필수)</div>
         <div class="terms">
-          <p>
+          <textarea readonly>
             개인정보처리방침
 
             [차례]
@@ -408,11 +398,11 @@
             현 개인정보처리방침은 2017년 9월 22일에 제정되었으며, 정부 및 회사의 정책 또는 보안기술의 변경에 따라 내용의 추가, 삭제 및 수정이 있을 경우에는 개정 최소 7일 전부터 ‘공지사항’란을 통해 고지하며, 본 정책은 시행 일자에 시행됩니다.
             1) 공고일자 : 2018년 05월 01일
             2) 시행일자 : 2018년 05월 01일
-          </p>
+          </textarea>
         </div>
         <div class="checkbox">
           <input type="checkbox" id="agreeTerms" th:field="*{agreeTerms}" required>
-          <label for="agreeTerms">동의합니다</label>
+          <label for="agreeTerms">모두 동의합니다</label>
         </div>
         <div class="nextButton">
           <button type="button" onclick="showSignUpForm()">다음</button>
@@ -498,25 +488,25 @@
         </div>
 
 
-<!--        <script th:inline="javascript">-->
-<!--          /* signUpFailMsg가 null이 아닐 때만 alert 창 표시 */-->
-<!--          if ([[${signUpFailMsg != null}]]) {-->
-<!--              alert([[${signUpFailMsg}]]);-->
-<!--          }-->
-<!--        </script>-->
+        <script th:inline="javascript">
+          /* signUpFailMsg가 null이 아닐 때만 alert 창 표시 */
+          if ([[${signUpFailMsg != null}]]) {
+              alert([[${signUpFailMsg}]]);
+          }
+        </script>
 <!--        &lt;!&ndash; 로그인 실패 메시지 출력 &ndash;&gt;-->
 <!--        <p th:if="${signUpFailMsg}" th:text="${signUpFailMsg}"-->
 <!--           style="color:red; padding-bottom:20px;"></p>-->
-        <script>
-          // 회원가입 폼 유효성 검사
-          function validateSignUpForm() {
-            if (signUpFailMsg) {
-              alert(signUpFailMsg); // 유효성 검사 실패 메시지 표시
-              return false; // 폼 제출 방지
-            }
-            return true; // 유효성 검사 통과 시 제출 허용
-          }
-        </script>
+<!--        <script>-->
+<!--          // 회원가입 폼 유효성 검사-->
+<!--          function validateSignUpForm() {-->
+<!--            if (signUpFailMsg) {-->
+<!--              alert(signUpFailMsg); // 유효성 검사 실패 메시지 표시-->
+<!--              return false; // 폼 제출 방지-->
+<!--            }-->
+<!--            return true; // 유효성 검사 통과 시 제출 허용-->
+<!--          }-->
+<!--        </script>-->
 
       </div>
     </form>

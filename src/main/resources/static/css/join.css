@@ -90,18 +90,13 @@ body {
     background-color: #f9f9f9;
 }
 
-.terms {
-    height: 300px; /* 고정 높이 */
-    overflow-y: scroll; /* 세로 스크롤 추가 */
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    background-color: #ffffff;
-    font-size: 14px;
-    color: #666;
-    line-height: 1.6;
-}
 
-.terms p {
-    margin: 0 0 10px;
+#terms textarea{
+    width:100%;
+    resize:none;
+    padding:20px;
+    height:150px;
+    border:1px solid #dcdcdc;
+    line-height:1.6em;
+    overflow:auto;
 }

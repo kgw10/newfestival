@@ -88,3 +88,13 @@ function checkDuplicateNickname() {
 //if (typeof signUpFailMsg !== 'undefined' && signUpFailMsg) {
 //    alert(signUpFailMsg);
 //}
+
+function validatePasswords() {
+    var password = document.querySelector('input[name="password"]').value;
+    var confirmPassword = document.getElementById('confirmPassword').value;
+    if (password !== confirmPassword) {
+        alert("비밀번호가 일치하지 않습니다.");
+        return false;
+    }
+    return true;
+}
